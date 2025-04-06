@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useClerk, useUser } from "@clerk/nextjs";
@@ -71,11 +72,11 @@ export default function AppLayout({
                 <>
                   <div className="avatar">
                     <div className="w-8 h-8 rounded-full">
-                      <img
+                      <Image
                         src={user.imageUrl}
                         alt={
                           user.username || user.emailAddresses[0].emailAddress
-                        }
+                         }
                       />
                     </div>
                   </div>
