@@ -95,7 +95,7 @@ const  VideoCard: React.FC<VideoCardProps> = ({video, onDownload}) => {
                 />
               )
             ) : (
-              <Image 
+              <Image
                 src={getThumbnailUrl(video.publicId)}
                 alt={video.title}
                 className="w-full h-full object-cover"
