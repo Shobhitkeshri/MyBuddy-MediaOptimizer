@@ -63,7 +63,7 @@ export default function AppLayout({
             <div className="flex-1">
               <Link href="/" onClick={handleLogoClick}>
                 <div className="btn btn-ghost normal-case text-2xl font-bold tracking-tight cursor-pointer">
-                  Cloudinary Showcase
+                  MyBuddy-Cloudinary Showcase
                 </div>
               </Link>
             </div>
@@ -72,7 +72,7 @@ export default function AppLayout({
                 <>
                   <div className="avatar">
                     <div className="w-8 h-8 rounded-full">
-                      <Image
+                      <img 
                         src={user.imageUrl}
                         alt={
                           user.username || user.emailAddresses[0].emailAddress
