@@ -54,6 +54,17 @@ const  VideoCard: React.FC<VideoCardProps> = ({video, onDownload}) => {
         return filesize(size)
     }, [])
 
+    const handleDownload = (url: string, title: string) => {
+      // Create a temporary anchor element
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = title || "video";
+      a.target = "_blank"; // Open in new tab if download fails
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    };
+
     const formatDuration = useCallback((seconds: number) => {
         const minutes = Math.floor(seconds / 60);
         const remainingSeconds = Math.round(seconds % 60);
@@ -95,7 +106,7 @@ const  VideoCard: React.FC<VideoCardProps> = ({video, onDownload}) => {
                 />
               )
             ) : (
-              <img  
+              <img
                 src={getThumbnailUrl(video.publicId)}
                 alt={video.title}
                 className="w-full h-full object-cover"
@@ -128,7 +139,7 @@ const  VideoCard: React.FC<VideoCardProps> = ({video, onDownload}) => {
                   <div className="font-semibold">Compressed</div>
                   <div>{formatSize(Number(video.compressedSize))}</div>
                 </div>
-              </div> 
+              </div>
             </div>
             <div className="flex justify-between items-center mt-4">
               <div className="text-sm font-semibold">
@@ -138,7 +149,7 @@ const  VideoCard: React.FC<VideoCardProps> = ({video, onDownload}) => {
               <button
                 className="btn btn-primary btn-sm"
                 onClick={() =>
-                  onDownload(getFullVideoUrl(video.publicId), video.title)
+                  handleDownload(getFullVideoUrl(video.publicId), video.title)
                 }
               >
                 <Download size={16} />
