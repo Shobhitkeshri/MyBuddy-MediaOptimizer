@@ -55,11 +55,10 @@ const  VideoCard: React.FC<VideoCardProps> = ({video, onDownload}) => {
     }, [])
 
     const handleDownload = (url: string, title: string) => {
-      // Create a temporary anchor element
       const a = document.createElement("a");
       a.href = url;
       a.download = title || "video";
-      a.target = "_blank"; // Open in new tab if download fails
+      a.target = "_blank";
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
